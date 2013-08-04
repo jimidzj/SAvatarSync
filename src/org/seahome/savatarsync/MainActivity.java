@@ -340,21 +340,22 @@ public class MainActivity extends GDListActivity {
 		friend.setProfileImageUrl(profileImageUrl);
 		friend.setAvatarLargeUrl(avatarLargeUrl);
 		friend.setMatch(false);	
-		
-		if (contactCursor.moveToFirst()){
-			int idColumn = contactCursor.getColumnIndex(ContactsContract.RawContacts._ID); 
-			int nameColumn = contactCursor.getColumnIndex(ContactsContract.RawContacts.DISPLAY_NAME_ALTERNATIVE);
-			while (!contactCursor.isAfterLast()) { 				
-				if (StringUtils.getDistanceRate(friend.getName(), contactCursor.getString(nameColumn))>=TARGET_DISTANCERATE ||
-					StringUtils.getDistanceRate(friend.getScreenName(), contactCursor.getString(nameColumn))>=TARGET_DISTANCERATE ||
-					StringUtils.getDistanceRate(friend.getRemark(), contactCursor.getString(nameColumn))>=TARGET_DISTANCERATE){
-					friend.setMatch(true);
-					friend.setContactId(contactCursor.getString(idColumn));
-					friend.setContactName(contactCursor.getString(nameColumn));
-					Log.i(TAG, friend.getContactId()+"  "+friend.getName()+"   " +friend.getAvatarLargeUrl());
-					break;
+		if (avatarLargeUrl.indexOf("180/0/1")<0){
+			if (contactCursor.moveToFirst()){
+				int idColumn = contactCursor.getColumnIndex(ContactsContract.RawContacts._ID); 
+				int nameColumn = contactCursor.getColumnIndex(ContactsContract.RawContacts.DISPLAY_NAME_ALTERNATIVE);
+				while (!contactCursor.isAfterLast()) { 				
+					if (StringUtils.getDistanceRate(friend.getName(), contactCursor.getString(nameColumn))>=TARGET_DISTANCERATE ||
+						StringUtils.getDistanceRate(friend.getScreenName(), contactCursor.getString(nameColumn))>=TARGET_DISTANCERATE ||
+						StringUtils.getDistanceRate(friend.getRemark(), contactCursor.getString(nameColumn))>=TARGET_DISTANCERATE){
+						friend.setMatch(true);
+						friend.setContactId(contactCursor.getString(idColumn));
+						friend.setContactName(contactCursor.getString(nameColumn));
+						Log.i(TAG, friend.getContactId()+"  "+friend.getName()+"   " +friend.getAvatarLargeUrl());
+						break;
+					}
+					contactCursor.moveToNext();
 				}
-				contactCursor.moveToNext();
 			}
 		}
 		
