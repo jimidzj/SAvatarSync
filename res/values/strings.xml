@@ -9,6 +9,7 @@
     <string name="action_sync">同步</string>    
     <string name="action_social">绑定社交</string>
     <string name="action_help">帮助</string>
+    <string name="action_exit">登出</string> 
     <string name="action_sina">新浪微博</string>
     <string name="action_qqweibo">腾讯微博</string>
     <string name="action_renren">人人</string>
@@ -23,6 +24,7 @@
 	<string name="msg_syncprocess_success">同步成功,请查看联系人</string>
 	<string name="msg_exit">再按一次退出程序</string>
 	<string name="msg_Login_success">登录成功</string>
+	<string name="msg_Logout_success">登出成功</string>
 	<string name="msg_autoLogin_success">自动登录成功</string>
 	<string name="msg_Login_failed">登录失败</string>
 	<string name="msg_Login_cancel">登录取消</string>

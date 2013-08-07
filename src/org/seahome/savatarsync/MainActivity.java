@@ -188,8 +188,9 @@ public class MainActivity extends GDListActivity {
 	private void prepareQuickActionGrid() {
         mGrid = new QuickActionGrid(this);
         mGrid.addQuickAction(new QuickAction(this, R.drawable.sina, R.string.action_sina));
-        mGrid.addQuickAction(new QuickAction(this, R.drawable.qqweibo, R.string.action_qqweibo));
-        mGrid.addQuickAction(new QuickAction(this, R.drawable.renren, R.string.action_renren));
+        mGrid.addQuickAction(new QuickAction(this, R.drawable.exit, R.string.action_exit));
+        //mGrid.addQuickAction(new QuickAction(this, R.drawable.qqweibo, R.string.action_qqweibo));
+        //mGrid.addQuickAction(new QuickAction(this, R.drawable.renren, R.string.action_renren));
 
         mGrid.setOnQuickActionClickListener(mActionListener);
     }
@@ -213,10 +214,12 @@ public class MainActivity extends GDListActivity {
         			}
         			break;
         		case 1:
-        			Utils.showToast(MainActivity.this, getApplicationContext().getString(R.string.msg_waiting));  
+        			SinaAccessTokenKeeper.clear(getApplicationContext());
+        			Utils.showToast(MainActivity.this, getApplicationContext().getString(R.string.msg_Logout_success));  
+        			//Utils.showToast(MainActivity.this, getApplicationContext().getString(R.string.msg_waiting));  
         			break;
         		case 2:
-        			Utils.showToast(MainActivity.this, getApplicationContext().getString(R.string.msg_waiting));  
+        			//Utils.showToast(MainActivity.this, getApplicationContext().getString(R.string.msg_waiting));  
         			break;
         		default:
         	}
